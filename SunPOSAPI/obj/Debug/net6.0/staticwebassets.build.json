@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "Sc9/ryGKMMA+RtAt/xWb2zkQ8sjKMlOxvh3d+M6Q/Gs=",
+  "Source": "SunPOSAPI",
+  "BasePath": "_content/SunPOSAPI",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

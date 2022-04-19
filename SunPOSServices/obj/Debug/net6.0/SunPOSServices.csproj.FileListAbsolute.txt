@@ -1,0 +1,15 @@
+C:\POS Projects\SunPOSAPI\SunPOSAPI\SunPOSServices\bin\Debug\net6.0\SunPOSServices.deps.json
+C:\POS Projects\SunPOSAPI\SunPOSAPI\SunPOSServices\bin\Debug\net6.0\SunPOSServices.dll
+C:\POS Projects\SunPOSAPI\SunPOSAPI\SunPOSServices\bin\Debug\net6.0\SunPOSServices.pdb
+C:\POS Projects\SunPOSAPI\SunPOSAPI\SunPOSServices\bin\Debug\net6.0\SunPOSData.dll
+C:\POS Projects\SunPOSAPI\SunPOSAPI\SunPOSServices\bin\Debug\net6.0\SunPOSData.pdb
+C:\POS Projects\SunPOSAPI\SunPOSAPI\SunPOSServices\obj\Debug\net6.0\SunPOSServices.csproj.AssemblyReference.cache
+C:\POS Projects\SunPOSAPI\SunPOSAPI\SunPOSServices\obj\Debug\net6.0\SunPOSServices.GeneratedMSBuildEditorConfig.editorconfig
+C:\POS Projects\SunPOSAPI\SunPOSAPI\SunPOSServices\obj\Debug\net6.0\SunPOSServices.AssemblyInfoInputs.cache
+C:\POS Projects\SunPOSAPI\SunPOSAPI\SunPOSServices\obj\Debug\net6.0\SunPOSServices.AssemblyInfo.cs
+C:\POS Projects\SunPOSAPI\SunPOSAPI\SunPOSServices\obj\Debug\net6.0\SunPOSServices.csproj.CoreCompileInputs.cache
+C:\POS Projects\SunPOSAPI\SunPOSAPI\SunPOSServices\obj\Debug\net6.0\SunPOSServices.csproj.CopyComplete
+C:\POS Projects\SunPOSAPI\SunPOSAPI\SunPOSServices\obj\Debug\net6.0\SunPOSServices.dll
+C:\POS Projects\SunPOSAPI\SunPOSAPI\SunPOSServices\obj\Debug\net6.0\refint\SunPOSServices.dll
+C:\POS Projects\SunPOSAPI\SunPOSAPI\SunPOSServices\obj\Debug\net6.0\SunPOSServices.pdb
+C:\POS Projects\SunPOSAPI\SunPOSAPI\SunPOSServices\obj\Debug\net6.0\ref\SunPOSServices.dll
