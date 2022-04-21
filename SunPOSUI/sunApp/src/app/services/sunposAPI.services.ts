@@ -10,11 +10,18 @@ export class sunposAPIService{
     categories: fromModels.ICategory[] = [];
     menuItems: fromModels.IMenu[] = [];
     restaurant: fromModels.IRestaurant= {
-        RestaurantID: '',
-        RestaurantLocation: '',
-        RestaurantName: '',
-        RestaurantPhoneNumber: '',
-        RestaurantViewName: ''
+        restaurantID: '',
+        restaurantLocation: '',
+        restaurantName: '',
+        restaurantPhoneNumber: '',
+        restaurantViewName: '',
+        mondayHours: '',
+        tuesdayHours: '',
+        wednesdayHours: '',
+        thursdayHours: '',
+        fridayHours: '',
+        saturdayHours: '',
+        sundayHours: ''
     };
 
     private baseURL = environment.apiUrl;

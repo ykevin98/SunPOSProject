@@ -1,0 +1,28 @@
+<p>test-component works!</p>
+<div>
+    <h1>{{ restaurant.restaurantLocation }} </h1>
+</div>
+
+<br>
+
+<div>
+    {{ restaurant.restaurantName }}
+</div>
+
+<br>
+<h1> Categories </h1>
+<div>
+    <ul class="nav">
+        <li *ngFor="let category of categories">
+            <h4>{{ category.categoryName }}</h4>
+        </li>
+    </ul>
+</div>
+<h1> Menu Items </h1>
+<div>
+    <ul class="nav">
+        <li *ngFor="let menuItem of menuItems">
+            <h4>{{ menuItem.item }}</h4>
+        </li>
+    </ul>
+</div>

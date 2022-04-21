@@ -75,8 +75,32 @@ namespace SunPOSData.UOW
             _menuRepository = new Repository<Menu>(_context, _httpContextAccessor);
 
             var results = _menuRepository.QueryWithRawSqlOrStoreProcedure(Constants.StoredProcedures.GetMenu, paramaters)
-                    .Where(x => x.CategoryID == categoryId && x.Item != "None" && x.Item != "none" && x.Item != "NONE").ToList();
+                    .Where(x => x.CategoryID == categoryId && x.Item != "None" && x.Item != "none" && x.Item != "NONE")
+                    .OrderBy(x => x.Item).ToList();
 
+            foreach(var item in results)
+            {
+                if (item.Description == "none" || item.Description == "None")
+                {
+                    item.Description = string.Empty;
+                }
+                if (item.Item.Contains("BF"))
+                {
+                    item.Item.Replace("BF", "Beef");
+                }
+                if (item.Item.Contains("CH"))
+                {
+                    item.Item.Replace("CH", "Chicken");
+                }
+                if (item.Item.Contains("SH"))
+                {
+                    item.Item.Replace("SH", "Shrimp");
+                }
+                if (item.Item.Contains("CK"))
+                {
+                    item.Item.Replace("CK", "Chicken");
+                }
+            }
             return results;
         }
 

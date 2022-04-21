@@ -75,7 +75,8 @@
               "browserTarget": "sunApp:build:production"
             },
             "development": {
-              "browserTarget": "sunApp:build:development"
+              "browserTarget": "sunApp:build:development",
+              "proxyConfig": "src/proxy.config.json"
             }
           },
           "defaultConfiguration": "development"
