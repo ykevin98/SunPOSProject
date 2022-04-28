@@ -88,9 +88,9 @@ namespace SunPOSAPI.Controllers
         [HttpPost]
         [Route("AddToCart")]
         [ProducesResponseType(typeof(ResultViewModel), StatusCodes.Status200OK)]
-        public IActionResult AddToCart (MenuViewModel menuItem, UserViewModel user, Guid restaurantId)
+        public IActionResult AddToCart ([FromBody] MenuViewModel menuItem, Guid userId, Guid restaurantId)
         {
-            var result = _service.AddToCart(menuItem, user, restaurantId);
+            var result = _service.AddToCart(menuItem, userId, restaurantId);
 
             return Ok(result);
         }
@@ -98,7 +98,7 @@ namespace SunPOSAPI.Controllers
         [HttpPost]
         [Route("AddUser")]
         [ProducesResponseType(typeof(ResultViewModel), StatusCodes.Status200OK)]
-        public IActionResult AddUser (UserViewModel user)
+        public IActionResult AddUser ([FromBody] UserViewModel user)
         {
             var result = _service.AddUser(user);
 

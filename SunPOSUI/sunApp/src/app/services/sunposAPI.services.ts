@@ -42,8 +42,19 @@ export class sunposAPIService{
         (this.baseURL + 'SunPOS/GetCategories' + '?restaurantId=' + restaurantId, {withCredentials: true});
     }
 
-    getMenuItems(categoryId: string){
+    getMenuItems(categoryId: string): Observable<fromModels.IMenu[]>{
         return this.httpClient.get<fromModels.IMenu[]>
         (this.baseURL + 'SunPOS/GetMenu' + '?restaurantName=' + this.restaurantName + '&categoryId=' + categoryId, {withCredentials: true});
+    }
+
+    getUser(userName: string): Observable<fromModels.IUser>{
+        return this.httpClient.get<fromModels.IUser>
+        (this.baseURL + 'SunPOS/GetUser' + '?userName=' + userName, {withCredentials: true });
+    }
+
+    addUser(user: fromModels.IUser): Observable<fromModels.IResult>{
+        const headers = { 'content-type': 'application/json'}  
+        const body=JSON.stringify(user);
+        return this.httpClient.post<fromModels.IResult>(this.baseURL + 'SunPOS/AddUser', body, {'headers': headers, withCredentials: true });
     }
 }

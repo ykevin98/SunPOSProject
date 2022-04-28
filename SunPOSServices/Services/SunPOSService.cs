@@ -18,7 +18,7 @@ namespace SunPOSServices.Services
         public IEnumerable<MenuViewModel> GetMenuItems(string restaurantName, Guid categoryId);
         public UserViewModel GetUser(string userName);
         public IEnumerable<CartViewModel> GetShoppingCart (Guid restaurantId, Guid userId);
-        public ResultViewModel AddToCart(MenuViewModel menuItem, UserViewModel user, Guid restaurantId);
+        public ResultViewModel AddToCart(MenuViewModel menuItem, Guid userId, Guid restaurantId);
         public ResultViewModel AddUser(UserViewModel user);
     }
 
@@ -83,9 +83,9 @@ namespace SunPOSServices.Services
             return results.ToViewModels(_mapper);
         }
 
-        public ResultViewModel AddToCart(MenuViewModel menuItem, UserViewModel user, Guid restaurantId)
+        public ResultViewModel AddToCart(MenuViewModel menuItem, Guid userId, Guid restaurantId)
         {
-            var result = _sunPOSUOW.AddToCart(menuItem.ToModel(_mapper), user.ToModel(_mapper), restaurantId);
+            var result = _sunPOSUOW.AddToCart(menuItem.ToModel(_mapper), userId, restaurantId);
 
             return result.ToViewModel(_mapper);
         }

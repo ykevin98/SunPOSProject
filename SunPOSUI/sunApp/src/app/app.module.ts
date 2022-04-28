@@ -1,6 +1,7 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 
 import {RouterModule, Routes} from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
@@ -12,6 +13,9 @@ import { HomeModule } from './home/home.module';
 import { MenuCategoryModule } from './menu-category/menuCategory.module';
 import { MenuCategoryComponent } from './menu-category/menu-category.component';
 import { HeaderComponent } from './layout/header/header.component';
+import { AddUserComponent } from './add-user/add-user.component';
+import { AddUserModule } from './add-user/add-user.module';
+import { LoginPageComponent } from './login-page/login-page.component';
 
 const routes: Routes = [
   {
@@ -23,15 +27,18 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginPageComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
     HttpClientModule,
     NgbModule,
     HomeModule,
-    MenuCategoryModule
+    MenuCategoryModule,
+    AddUserModule
   ],
   providers: [sunposAPIService],
   bootstrap: [AppComponent]

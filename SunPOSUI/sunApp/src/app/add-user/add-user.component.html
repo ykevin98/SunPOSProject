@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm">
+            <label> User Name: </label>
+        </div>
+        <div>
+            <input [(ngModel)] = "user.userName" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm">
+            <label> First Name: </label>
+        </div>
+        <div>
+           <input [(ngModel)] = "user.userFirstName" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm">
+            <label> Last Name: </label>
+        </div>
+        <div>
+            <input [(ngModel)] = "user.userLastName" />
+        </div>
+    </div>
+
+    <br>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-sm">
+            <button (click)="addUser()"> Submit </button>
+        </div>
+    </div>
+</div>

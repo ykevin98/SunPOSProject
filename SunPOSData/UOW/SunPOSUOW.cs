@@ -21,7 +21,7 @@ namespace SunPOSData.UOW
         IRepository<User> UserRepository { get; }
         IRepository<Cart> CartRepository { get; }
         IEnumerable<Menu> GetMenuItems(string restaurantName, Guid categoryId);
-        Result AddToCart(Menu menuItem, User user, Guid restaurantId);
+        Result AddToCart(Menu menuItem, Guid userId, Guid restaurantId);
         Result AddUser(User user);
     }
 
@@ -132,7 +132,7 @@ namespace SunPOSData.UOW
             return results;
         }
 
-        public Result AddToCart(Menu menuItem, User user, Guid restaurantId)
+        public Result AddToCart(Menu menuItem, Guid userId, Guid restaurantId)
         {
             using (_context)
             {
@@ -147,7 +147,7 @@ namespace SunPOSData.UOW
                         LunchPrice = menuItem.LunchPrice,
                         DinnerPrice = menuItem.DinnerPrice,
                         Description = menuItem.Description,
-                        UserId = user.UserID,
+                        UserId = userId,
                         RestaurantID = restaurantId
                     };
 
@@ -182,6 +182,21 @@ namespace SunPOSData.UOW
             {
                 try
                 {
+                    var existingUser = UserRepository.FindBy(x => x.UserName == user.UserName).FirstOrDefault();
+                    if (existingUser != null)
+                    {
+                        Result existingResult = new Result
+                        {
+                            Message = "The username already exists. Please enter a different user name",
+                            IsSuccessful = false
+                        };
+
+                        return existingResult;
+                    }
+
+                    Guid newId = Guid.NewGuid();
+                    user.UserID = newId;
+
                     _context.Add(user);
 
                     _context.SaveChanges();

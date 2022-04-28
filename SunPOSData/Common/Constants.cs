@@ -8,7 +8,7 @@
         {
             public const string Categories = "Categories";
             public const string Restaurants = "Restaurants";
-            public const string User = "User";
+            public const string User = "Users";
             public const string ShoppingCart = "ShoppingCart";
         }
 
