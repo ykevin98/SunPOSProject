@@ -15,6 +15,9 @@ namespace SunPOSServices.Mapping
             CreateMap<CategoryViewModel, Category>().ReverseMap();
             CreateMap<RestaurantViewModel, Restaurant>().ReverseMap();
             CreateMap<MenuViewModel, Menu>().ReverseMap();
+            CreateMap<ResultViewModel, Result>().ReverseMap();
+            CreateMap<UserViewModel, User>().ReverseMap();
+            CreateMap<CartViewModel, Cart>().ReverseMap();
         }
     }
 }

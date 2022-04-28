@@ -1,9 +1,10 @@
 <div class="header">
-    <a href="#default" class="logo">{{restaurant.restaurantViewName}}</a>
+    <a href="/home" class="logo">{{restaurant.restaurantViewName}}</a>
     <div class="header-right">
-        <a href="/home">Home</a>
+        <a routerLink="/home" routerLinkActive="active-link">Home</a>
         <a href="/menucategory">Menu</a>
         <a href="#contact">Contact</a>
         <a href="#about">About</a>
+        <a href="/cart">Cart <fa-icon [icon]="shoppingCart"></fa-icon></a>
     </div>
 </div>

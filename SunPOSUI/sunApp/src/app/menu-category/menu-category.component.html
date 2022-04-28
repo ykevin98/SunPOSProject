@@ -1,21 +1,21 @@
-<ul ngbNav #nav="ngbNav" class="nav-tabs navColor">
-    <li ngbNavItem *ngFor="let category of categories">
-        <a ngbNavLink (click)="clickedCategoryTab(category.categoryID)">{{category.categoryName}}</a>
-        <ng-template ngbNavContent>
-            <div class ="row alignItems">
-                <div class="col-2 alignItems" *ngFor="let menuItem of menuItems">
-                    <div class="card" style="width: 18rem;">
-                        <img class="card-img-top" src="../../assets/sushi.png" alt="Card image cap">
-                        <div class="card-body">
-                        <h5 class="card-title">{{menuItem.item}}</h5>
-                        <p class="card-text">{{menuItem.description}}</p>
-                        <button class="btn btn-primary">Add to cart</button>
-                        </div>
-                    </div>
+<ul ngbNav #nav="ngbNav" class="nav-tabs">
+    <div class="scroll">
+        <li ngbNavItem *ngFor="let category of categories;" id="{{category.categoryID}}">
+            <a ngbNavLink (click)="clickedCategoryTab(category.categoryID)">{{category.categoryName}}</a>
+        </li>
+    </div>
+</ul>
+<div>
+    <div class ="row" style="justify-content: center">
+        <div class="col-2 alignItems" *ngFor="let menuItem of menuItems">
+            <div class="card" style="width: 15rem; background-color: beige;">
+                <img class="card-img-top" src="../../assets/sushi.png" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">{{menuItem.item}}</h5>
+                    <p class="card-text">{{menuItem.description}}</p>
+                    <button class="btn btn-primary">Add to cart</button>
                 </div>
             </div>
-        </ng-template>
-    </li>
-</ul>
-<div [ngbNavOutlet]="nav"></div>
-  
+        </div>
+    </div>
+</div>

@@ -11,6 +11,7 @@ import { LayoutModule } from './layout/layout.module';
 import { HomeModule } from './home/home.module';
 import { MenuCategoryModule } from './menu-category/menuCategory.module';
 import { MenuCategoryComponent } from './menu-category/menu-category.component';
+import { HeaderComponent } from './layout/header/header.component';
 
 const routes: Routes = [
   {
@@ -22,7 +23,7 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,

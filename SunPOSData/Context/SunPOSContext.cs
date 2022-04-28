@@ -26,6 +26,8 @@ namespace SunPOSData.Context
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Restaurant> Restaurants { get; set; }
         public virtual DbSet<Menu> Menus { get; set; }
+        public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<Cart> Carts { get; set; }
 
         #endregion
 
@@ -55,7 +57,18 @@ namespace SunPOSData.Context
                 entity.HasKey(e => new { e.MenuId });
                 entity.Property(e => e.Description).HasColumnName("Descript");
             });
-            
+
+            modelBuilder.Entity<User>(entity =>
+            {
+                entity.HasKey(e => new { e.UserID });
+                entity.ToTable(Constants.TableName.User);
+            });
+
+            modelBuilder.Entity<Cart>(entity =>
+            {
+                entity.HasKey(e => new { e.MenuId });
+                entity.ToTable(Constants.TableName.ShoppingCart);
+            });
         }
 
         #endregion

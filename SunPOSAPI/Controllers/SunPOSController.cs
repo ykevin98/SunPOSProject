@@ -64,6 +64,47 @@ namespace SunPOSAPI.Controllers
 
             return Ok(menuItems);
         }
+
+        [HttpGet]
+        [Route("GetUser")]
+        [ProducesResponseType(typeof(UserViewModel), StatusCodes.Status200OK)]
+        public IActionResult GetUser (string userName)
+        {
+            var user = _service.GetUser(userName);
+
+            return Ok(user);
+        }
+
+        [HttpGet]
+        [Route("GetShoppingCart")]
+        [ProducesResponseType(typeof(CartViewModel), StatusCodes.Status200OK)]
+        public IActionResult GetShoppingCart (Guid userId, Guid restaurantId)
+        {
+            var shoppingCart = _service.GetShoppingCart(userId, restaurantId);
+
+            return Ok(shoppingCart);
+        }
+
+        [HttpPost]
+        [Route("AddToCart")]
+        [ProducesResponseType(typeof(ResultViewModel), StatusCodes.Status200OK)]
+        public IActionResult AddToCart (MenuViewModel menuItem, UserViewModel user, Guid restaurantId)
+        {
+            var result = _service.AddToCart(menuItem, user, restaurantId);
+
+            return Ok(result);
+        }
+
+        [HttpPost]
+        [Route("AddUser")]
+        [ProducesResponseType(typeof(ResultViewModel), StatusCodes.Status200OK)]
+        public IActionResult AddUser (UserViewModel user)
+        {
+            var result = _service.AddUser(user);
+
+            return Ok(result);
+        }
+
         #endregion
     }
 

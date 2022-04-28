@@ -10,7 +10,13 @@
     padding-left:0;
 }
 
-.navColor{
-    background-color: burlywood
-    
+.scroll{
+    background-color: burlywood;
+    white-space: nowrap;
+    overflow-x: auto; 
+    overflow-y: hidden;
+}
+
+.scroll li{
+    display: inline-block;
 }

@@ -38,6 +38,35 @@ namespace SunPOSServices.Mapping
             return mapper.Map<IEnumerable<MenuViewModel>>(models);
         }
 
+        public static ResultViewModel ToViewModel(this Result model, IMapper mapper)
+        {
+            return mapper.Map<ResultViewModel>(model);
+        }
+
+        public static UserViewModel ToViewModel(this User model, IMapper mapper)
+        {
+            return mapper.Map<UserViewModel>(model);
+        }
+
+        public static IEnumerable<CartViewModel> ToViewModels(this IEnumerable<Cart> models, IMapper mapper)
+        {
+            return mapper.Map<IEnumerable<CartViewModel>>(models);
+        }
+
+        #endregion
+
+        #region ToDataModels
+
+        public static Menu ToModel(this MenuViewModel viewModel, IMapper mapper)
+        {
+            return mapper.Map<Menu>(viewModel);
+        }
+
+        public static User ToModel(this UserViewModel viewModel, IMapper mapper)
+        {
+            return mapper.Map<User>(viewModel);
+        }
+
         #endregion
     }
 }

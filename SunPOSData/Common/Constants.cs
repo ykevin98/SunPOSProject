@@ -8,6 +8,8 @@
         {
             public const string Categories = "Categories";
             public const string Restaurants = "Restaurants";
+            public const string User = "User";
+            public const string ShoppingCart = "ShoppingCart";
         }
 
         #endregion

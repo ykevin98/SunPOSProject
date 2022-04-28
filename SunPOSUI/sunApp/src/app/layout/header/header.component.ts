@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as fromServices from '../../services';
 import * as fromModels from '../../models';
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-header',
@@ -8,7 +9,8 @@ import * as fromModels from '../../models';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-
+  
+  shoppingCart = faShoppingCart;
   restaurant: fromModels.IRestaurant = {
     restaurantID: '',
     restaurantLocation: '',
