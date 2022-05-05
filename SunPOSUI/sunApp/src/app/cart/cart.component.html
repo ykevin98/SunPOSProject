@@ -1,0 +1,35 @@
+<div style="text-align: center;">
+    <h4> Cart </h4>
+</div>
+<div style="text-align: center;">
+    <h4> {{result.message}} </h4>
+</div>
+<div class="cartTable">
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th scope="col"> Item Name </th>
+                <th scope="col"> Price </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let cartItem of cartItems">
+                <td> {{cartItem.item}}</td>
+                <td> ${{cartItem.price.toFixed(2)}}</td>
+            </tr>
+            <tr>
+                <td style="text-align: right; font-weight: bold;"> Sub-Total </td>
+                <td> ${{subTotal}} </td>
+            </tr>
+            <tr>
+                <td style="text-align: right; font-weight: bold;"> Tax </td>
+                <td> ${{tax.toFixed(2)}}</td>
+            </tr>
+            <tr>
+                <td style="text-align: right; font-weight: bold;"> Total </td>
+                <td> ${{totalPrice.toFixed(2)}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <button class="btn btn-primary" (click)="checkout(cartItems)"> Checkout </button>
+</div>

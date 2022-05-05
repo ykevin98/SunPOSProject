@@ -16,6 +16,8 @@ import { HeaderComponent } from './layout/header/header.component';
 import { AddUserComponent } from './add-user/add-user.component';
 import { AddUserModule } from './add-user/add-user.module';
 import { LoginPageComponent } from './login-page/login-page.component';
+import { CartComponent } from './cart/cart.component';
+import { CartModule } from './cart/cart.module';
 
 const routes: Routes = [
   {
@@ -28,7 +30,6 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    LoginPageComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +39,8 @@ const routes: Routes = [
     NgbModule,
     HomeModule,
     MenuCategoryModule,
-    AddUserModule
+    AddUserModule,
+    CartModule
   ],
   providers: [sunposAPIService],
   bootstrap: [AppComponent]

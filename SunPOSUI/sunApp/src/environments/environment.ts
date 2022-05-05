@@ -5,7 +5,8 @@
 export const environment = {
   production: true,
   apiUrl: 'https://localhost:7177/api/',
-  restaurantName: 'LittleTokyoPasadena'
+  restaurantName: 'LittleTokyoPasadena',
+  tax: 0.0825
 };
 
 /*

@@ -6,25 +6,6 @@ import { environment } from 'src/environments/environment';
 
 @Injectable()
 export class sunposAPIService{
-
-    categories: fromModels.ICategory[] = [];
-    menuItems: fromModels.IMenu[] = [];
-    cartItems: fromModels.ICart[] = [];
-    restaurant: fromModels.IRestaurant= {
-        restaurantID: '',
-        restaurantLocation: '',
-        restaurantName: '',
-        restaurantPhoneNumber: '',
-        restaurantViewName: '',
-        mondayHours: '',
-        tuesdayHours: '',
-        wednesdayHours: '',
-        thursdayHours: '',
-        fridayHours: '',
-        saturdayHours: '',
-        sundayHours: ''
-    };
-
     private baseURL = environment.apiUrl;
     private restaurantName = environment.restaurantName;
 
@@ -63,9 +44,17 @@ export class sunposAPIService{
         return this.httpClient.post<fromModels.IResult>(this.baseURL + 'SunPOS/AddUser', body, {'headers': headers, withCredentials: true });
     }
 
-    addToCart(menuItem: fromModels.IMenu): Observable<fromModels.IResult>{
+    addToCart(menuItem: fromModels.IMenu, userId: string, restaurantId: string): Observable<fromModels.IResult>{
         const headers = { 'content-type': 'application/json'};
         const body = JSON.stringify(menuItem);
-        return this.httpClient.post<fromModels.IResult>(this.baseURL + 'SunPOS/AddToCart', body, {'headers': headers, withCredentials: true });
+        return this.httpClient.post<fromModels.IResult>
+        (this.baseURL + 'SunPOS/AddToCart' + '?userId=' + userId + '&restaurantId=' + restaurantId, body, {'headers': headers, withCredentials: true });
+    }
+
+    checkout(cartItems: fromModels.ICart[]): Observable<fromModels.IResult>{
+        const headers = { 'content-type': 'application/json'};
+        const body = JSON.stringify(cartItems);
+        return this.httpClient.delete<fromModels.IResult>
+        (this.baseURL + 'SunPOS/Checkout', {'headers': headers, 'body': body, withCredentials: true});
     }
 }

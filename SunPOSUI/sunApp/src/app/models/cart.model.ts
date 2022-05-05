@@ -8,4 +8,5 @@ export interface ICart{
     description: string;
     userId: string;
     restaurantId: string;
+    itemId: string;
 }

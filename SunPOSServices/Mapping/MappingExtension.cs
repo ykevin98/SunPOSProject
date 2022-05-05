@@ -66,7 +66,12 @@ namespace SunPOSServices.Mapping
         {
             return mapper.Map<User>(viewModel);
         }
-
+           
+        public static IEnumerable<Cart> ToModels(this IEnumerable<CartViewModel> viewModels, IMapper mapper)
+        {
+            return mapper.Map<IEnumerable<Cart>>(viewModels);
+        }
+        
         #endregion
     }
 }

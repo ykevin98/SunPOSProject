@@ -17,9 +17,10 @@ namespace SunPOSServices.Services
         public IEnumerable<CategoryViewModel> GetCategories(Guid restaurantID);
         public IEnumerable<MenuViewModel> GetMenuItems(string restaurantName, Guid categoryId);
         public UserViewModel GetUser(string userName);
-        public IEnumerable<CartViewModel> GetShoppingCart (Guid restaurantId, Guid userId);
+        public IEnumerable<CartViewModel> GetShoppingCart (Guid userId, Guid restaurantId);
         public ResultViewModel AddToCart(MenuViewModel menuItem, Guid userId, Guid restaurantId);
         public ResultViewModel AddUser(UserViewModel user);
+        public ResultViewModel Checkout(IEnumerable<CartViewModel> cartItems);
     }
 
     #endregion
@@ -75,7 +76,7 @@ namespace SunPOSServices.Services
             return result.ToViewModel(_mapper);
         }
 
-        public IEnumerable<CartViewModel> GetShoppingCart(Guid restaurantId, Guid userId)
+        public IEnumerable<CartViewModel> GetShoppingCart(Guid userId, Guid restaurantId)
         {
             var results = _sunPOSUOW.CartRepository.FindBy(x => x.UserId == userId && x.RestaurantID == restaurantId)
                 .OrderBy(x => x.Item).ToList();
@@ -93,6 +94,13 @@ namespace SunPOSServices.Services
         public ResultViewModel AddUser(UserViewModel user)
         {
             var result = _sunPOSUOW.AddUser(user.ToModel(_mapper));
+
+            return result.ToViewModel(_mapper);
+        }
+
+        public ResultViewModel Checkout(IEnumerable<CartViewModel> cartItems)
+        {
+            var result = _sunPOSUOW.Checkout(cartItems.ToModels(_mapper));
 
             return result.ToViewModel(_mapper);
         }

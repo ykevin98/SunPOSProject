@@ -13,6 +13,7 @@
         public string Description { get; set; }
         public Guid UserId { get; set; }
         public Guid RestaurantID { get; set; }
+        public Guid ItemId { get; set; }
 
         #endregion
     }

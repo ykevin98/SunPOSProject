@@ -66,7 +66,7 @@ namespace SunPOSData.Context
 
             modelBuilder.Entity<Cart>(entity =>
             {
-                entity.HasKey(e => new { e.MenuId });
+                entity.HasKey(e => new { e.ItemId });
                 entity.ToTable(Constants.TableName.ShoppingCart);
             });
         }

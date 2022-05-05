@@ -23,6 +23,7 @@ namespace SunPOSData.UOW
         IEnumerable<Menu> GetMenuItems(string restaurantName, Guid categoryId);
         Result AddToCart(Menu menuItem, Guid userId, Guid restaurantId);
         Result AddUser(User user);
+        Result Checkout(IEnumerable<Cart> cartItems);
     }
 
     #endregion
@@ -148,7 +149,8 @@ namespace SunPOSData.UOW
                         DinnerPrice = menuItem.DinnerPrice,
                         Description = menuItem.Description,
                         UserId = userId,
-                        RestaurantID = restaurantId
+                        RestaurantID = restaurantId,
+                        ItemId = Guid.NewGuid()
                     };
 
                     _context.Add(cart);
@@ -204,6 +206,42 @@ namespace SunPOSData.UOW
                     Result result = new Result
                     {
                         Message = "User added successfully",
+                        IsSuccessful = true
+                    };
+
+                    return result;
+                }
+                catch (Exception exception)
+                {
+                    Result result = new Result
+                    {
+                        Message = exception.Message,
+                        IsSuccessful = false
+                    };
+
+                    return result;
+                }
+            }
+        }
+
+        public Result Checkout(IEnumerable<Cart> cartItems)
+        {
+            using (_context)
+            {
+                try
+                {
+                    foreach (var cartItem in cartItems)
+                    {
+                        var cart = CartRepository.FindBy(x => x.ItemId == cartItem.ItemId).First();
+
+                        _context.Remove(cart);
+
+                        _context.SaveChanges();
+                    }
+
+                    Result result = new Result
+                    {
+                        Message = "Checkout successful, thank you!!",
                         IsSuccessful = true
                     };
 
