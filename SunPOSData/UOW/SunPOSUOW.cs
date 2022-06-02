@@ -24,6 +24,7 @@ namespace SunPOSData.UOW
         Result AddToCart(Menu menuItem, Guid userId, Guid restaurantId);
         Result AddUser(User user);
         Result Checkout(IEnumerable<Cart> cartItems);
+        Result RemoveCartItem(Guid itemId);
     }
 
     #endregion
@@ -242,6 +243,39 @@ namespace SunPOSData.UOW
                     Result result = new Result
                     {
                         Message = "Checkout successful, thank you!!",
+                        IsSuccessful = true
+                    };
+
+                    return result;
+                }
+                catch (Exception exception)
+                {
+                    Result result = new Result
+                    {
+                        Message = exception.Message,
+                        IsSuccessful = false
+                    };
+
+                    return result;
+                }
+            }
+        }
+
+        public Result RemoveCartItem(Guid itemId)
+        {
+            using (_context)
+            {
+                try
+                {
+                    var cartItem = CartRepository.FindBy(x => x.ItemId == itemId).First();
+
+                    _context.Remove(cartItem);
+
+                    _context.SaveChanges();
+
+                    Result result = new Result
+                    {
+                        Message = "Cart Item removed successfully",
                         IsSuccessful = true
                     };
 

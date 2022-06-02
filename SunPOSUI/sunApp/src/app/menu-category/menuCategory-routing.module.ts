@@ -5,7 +5,7 @@ import { MainLayoutComponent} from '../layout/main-layout/main-layout.component'
 
 const routes: Routes = [
     {
-        path: 'menucategory',
+        path: 'menu',
         component: MainLayoutComponent,
         children: [
             { path: '', component: MenuCategoryComponent }

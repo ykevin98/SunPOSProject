@@ -18,6 +18,7 @@ import { AddUserModule } from './add-user/add-user.module';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { CartComponent } from './cart/cart.component';
 import { CartModule } from './cart/cart.module';
+import { LoginPageModule } from './login-page/login-page.module';
 
 const routes: Routes = [
   {
@@ -40,7 +41,8 @@ const routes: Routes = [
     HomeModule,
     MenuCategoryModule,
     AddUserModule,
-    CartModule
+    CartModule,
+    LoginPageModule
   ],
   providers: [sunposAPIService],
   bootstrap: [AppComponent]

@@ -14,7 +14,13 @@
         </thead>
         <tbody>
             <tr *ngFor="let cartItem of cartItems">
-                <td> {{cartItem.item}}</td>
+                <td> 
+                    {{cartItem.item}}
+                    <div>
+                        <button class="btn btn-sm btn-primary" style="margin-right: 5px;"> Edit </button>
+                        <button class="btn btn-sm btn-danger" (click)="removeCartItem(cartItem.itemId)"> Remove </button>
+                    </div>
+                </td>
                 <td> ${{cartItem.price.toFixed(2)}}</td>
             </tr>
             <tr>

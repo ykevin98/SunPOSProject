@@ -78,4 +78,12 @@ export class CartComponent implements OnInit {
       this.result = result;
     });
   }
+
+  removeCartItem(itemId: string) : void {
+    this.sunposAPIService.removeCartItem(itemId).subscribe(result => {
+      this.result = result;
+
+      window.location.reload();
+    });
+  }
 }

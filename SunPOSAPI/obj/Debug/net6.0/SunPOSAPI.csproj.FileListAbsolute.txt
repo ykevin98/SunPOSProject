@@ -79,3 +79,4 @@ C:\POS Projects\SunPOSAPI\SunPOSAPI\SunPOSAPI\obj\Debug\net6.0\refint\SunPOSAPI.
 C:\POS Projects\SunPOSAPI\SunPOSAPI\SunPOSAPI\obj\Debug\net6.0\SunPOSAPI.pdb
 C:\POS Projects\SunPOSAPI\SunPOSAPI\SunPOSAPI\obj\Debug\net6.0\SunPOSAPI.genruntimeconfig.cache
 C:\POS Projects\SunPOSAPI\SunPOSAPI\SunPOSAPI\obj\Debug\net6.0\ref\SunPOSAPI.dll
+C:\POS Projects\SunPOSAPI\SunPOSAPI\SunPOSAPI\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

@@ -13,6 +13,7 @@ export class HeaderComponent implements OnInit {
   
   shoppingCart = faShoppingCart;
   editIcon = faEdit;
+  cartItems: fromModels.ICart[] = [];
   restaurant: fromModels.IRestaurant = {
     restaurantID: '',
     restaurantLocation: '',
@@ -37,19 +38,30 @@ export class HeaderComponent implements OnInit {
 
   public fullName = '';
   public userName = '';
+  public cartItemCount = 0;
+  public restaurantId = '';
+  public userId = '';
 
   constructor(private sunposAPIService: fromServices.sunposAPIService) { }
 
   ngOnInit(): void {
     this.sunposAPIService.getRestaurant().subscribe(result => {
       this.restaurant = result;
-    });
-    
-    this.sunposAPIService.getUser('ykevin98').subscribe(result =>{
-      this.user = result;
 
-      this.fullName = this.user.userFirstName + ' ' + this.user.userLastName;
-      this.userName = this.user.userName;
-    })
+      this.restaurantId = this.restaurant.restaurantID;
+
+      this.sunposAPIService.getUser('ykevin98').subscribe(result =>{
+        this.user = result;
+  
+        this.fullName = this.user.userFirstName + ' ' + this.user.userLastName;
+        this.userName = this.user.userName;
+  
+        this.userId = this.user.userID;
+
+        this.sunposAPIService.getCartItems(this.userId, this.restaurantId).subscribe(result =>{
+          this.cartItemCount = result.length;
+        });
+      });
+    });
   }
 }

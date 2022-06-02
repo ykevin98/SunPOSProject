@@ -102,6 +102,8 @@ export class MenuCategoryComponent implements OnInit {
 
       if (this.result.isSuccessful){
         this.modalService.dismissAll();
+
+        window.location.reload();
       }
     });
   }

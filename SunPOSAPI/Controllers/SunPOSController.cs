@@ -3,6 +3,7 @@
 using SunPOSServices.Services;
 using SunPOSServices.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 
 #endregion
 
@@ -11,6 +12,7 @@ namespace SunPOSAPI.Controllers
     #region Controller
 
     [ApiController]
+    
     [Route("api/[controller]")]
     public class SunPOSController : ControllerBase
     {
@@ -111,6 +113,16 @@ namespace SunPOSAPI.Controllers
         public IActionResult Checkout(IEnumerable<CartViewModel> cartItems)
         {
             var result = _service.Checkout(cartItems);
+
+            return Ok(result);
+        }
+
+        [HttpDelete]
+        [Route("RemoveCartItem")]
+        [ProducesResponseType(typeof(ResultViewModel), StatusCodes.Status200OK)]
+        public IActionResult RemoveCartItem(Guid itemId)
+        {
+            var result = _service.RemoveCartItem(itemId);
 
             return Ok(result);
         }

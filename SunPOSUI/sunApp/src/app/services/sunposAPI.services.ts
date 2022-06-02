@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { from, Observable, ObservedValueOf } from 'rxjs';
+import { BehaviorSubject, from, Observable, ReplaySubject } from 'rxjs';
 import * as fromModels from '../models';
 import { environment } from 'src/environments/environment';
 
@@ -9,8 +9,23 @@ export class sunposAPIService{
     private baseURL = environment.apiUrl;
     private restaurantName = environment.restaurantName;
 
-    constructor(private httpClient: HttpClient){
+    private shoppingCart$: BehaviorSubject<fromModels.ICart>;
 
+    constructor(private httpClient: HttpClient){
+        this.shoppingCart$ = new BehaviorSubject<fromModels.ICart>(
+            {
+                menuId: 0,
+                item: '',
+                item2: '',
+                price: 0,
+                lunchPrice: 0,
+                dinnerPrice: 0,
+                description: '',
+                userId: '',
+                restaurantId: '',
+                itemId: ''
+            }
+        )
     }
 
     getRestaurant(): Observable<fromModels.IRestaurant>{
@@ -56,5 +71,23 @@ export class sunposAPIService{
         const body = JSON.stringify(cartItems);
         return this.httpClient.delete<fromModels.IResult>
         (this.baseURL + 'SunPOS/Checkout', {'headers': headers, 'body': body, withCredentials: true});
+    }
+
+    removeCartItem(itemId: string): Observable<fromModels.IResult>{
+        const headers = { 'content-type': 'application/json'};
+        return this.httpClient.delete<fromModels.IResult>
+        (this.baseURL + 'SunPOS/RemoveCartItem' + '?itemId=' + itemId, {withCredentials: true });
+    }
+
+    private getShoppingCart(userId: string, restaurantId: string){
+        this.httpClient.get<fromModels.ICart>
+        (this.baseURL + 'SunPOS/GetShoppingCart' + '?userId=' + userId + '&restaurantId=' + restaurantId, { withCredentials: true})
+        .subscribe((result) =>{
+            this.setShoppingCart(result);
+        });
+    }
+
+    private setShoppingCart(shoppingCart: fromModels.ICart){
+        this.shoppingCart$.next(shoppingCart);
     }
 }

@@ -21,6 +21,7 @@ namespace SunPOSServices.Services
         public ResultViewModel AddToCart(MenuViewModel menuItem, Guid userId, Guid restaurantId);
         public ResultViewModel AddUser(UserViewModel user);
         public ResultViewModel Checkout(IEnumerable<CartViewModel> cartItems);
+        public ResultViewModel RemoveCartItem(Guid itemId);
     }
 
     #endregion
@@ -101,6 +102,13 @@ namespace SunPOSServices.Services
         public ResultViewModel Checkout(IEnumerable<CartViewModel> cartItems)
         {
             var result = _sunPOSUOW.Checkout(cartItems.ToModels(_mapper));
+
+            return result.ToViewModel(_mapper);
+        }
+
+        public ResultViewModel RemoveCartItem(Guid itemId)
+        {
+            var result = _sunPOSUOW.RemoveCartItem(itemId);
 
             return result.ToViewModel(_mapper);
         }

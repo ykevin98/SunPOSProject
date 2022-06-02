@@ -2,13 +2,11 @@
     <a href="/home" class="logo">{{restaurant.restaurantViewName}}</a>
     <div class="header-right">
         <a routerLink="/home" routerLinkActive="active-link">Home</a>
-        <a href="/menucategory">Menu</a>
+        <a href="/menu">Menu</a>
         <a href="#contact">Contact</a>
-        <a href="#about">About</a>
-        <a href="/cart">Cart <fa-icon [icon]="shoppingCart"></fa-icon></a>
+        <a href="/cart">Cart <fa-icon [icon]="shoppingCart"></fa-icon> ({{cartItemCount}}) </a>
         <div class="card userCard">
-            <h4>{{fullName}}</h4>
-            <a href="/editProfile"><fa-icon [icon]="editIcon"></fa-icon> </a>
+            <h4>{{fullName}} <a href="/editProfile"><fa-icon [icon]="editIcon"></fa-icon></a></h4>
         </div>
     </div>
 </div>
